@@ -59,7 +59,7 @@ safejev/
 | 4 | Governance: policy, authz, approval, audit, report | §12 | done |
 | 5 | Engine: `SafeJEV.scan`, `guard_tool` with fail-closed, `from_pretrained` | §4, §8 | done |
 | 6 | Input converters (OpenAI / LangChain / MCP / trajectory) + MCP stdio proxy | §4 | done |
-| 7 | Encoder detector: backbone + LoRA + 3 heads, save / load, temperature | §5.3, §10 | |
+| 7 | Encoder detector: backbone + LoRA + 3 heads, save / load, temperature | §5.3, §10 | done |
 | 8 | Training tooling: sources, converters, mutation generator, leakage, trainer, calibrate | §9, §10 | |
 | 9 | Evaluation: metrics, bootstrap CI, harness (E1/E2/E6), latency (E7) | §11 | |
 | 10 | CLI: scan / proxy / eval / report | §8 | |

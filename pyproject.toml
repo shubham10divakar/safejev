@@ -36,4 +36,5 @@ include = ["safejev", "training", "configs", "tests", "examples", "README.md", "
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
 markers = ["model: needs torch + transformers + peft (skipped if missing)"]
