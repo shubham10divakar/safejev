@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "safejev"
+dynamic = ["version"]
+description = "AI security and governance toolkit: calibrated local detectors for prompt attacks, misuse and risky agent actions, with a deterministic policy layer"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "Subham" }]
+keywords = ["llm-security", "prompt-injection", "jailbreak", "ai-agents", "guardrails", "mcp", "governance", "jev"]
+dependencies = ["pyyaml>=6"]
+
+[project.optional-dependencies]
+model = ["torch>=2.1", "transformers>=4.45", "peft>=0.13", "huggingface_hub>=0.24"]
+train = ["safejev[model]", "numpy", "datasets>=3.0"]
+test = ["pytest>=8"]
+
+[project.scripts]
+safejev = "safejev.cli:main"
+
+[project.urls]
+Repository = "https://github.com/shubham10divakar/safejev"
+
+[tool.hatch.version]
+path = "safejev/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["safejev"]
+
+[tool.hatch.build.targets.sdist]
+include = ["safejev", "training", "configs", "tests", "examples", "README.md", "LICENSE", "pyproject.toml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["model: needs torch + transformers + peft (skipped if missing)"]

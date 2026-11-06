@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.venv/
+runs/
+/data/
+/weights/
+*.jsonl.tmp
+safejev_audit.jsonl
