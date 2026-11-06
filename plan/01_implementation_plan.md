@@ -53,8 +53,8 @@ safejev/
 | # | Step | Design § | Status |
 |---|---|---|---|
 | 0 | git init, exclude from outer repo, aims + plan + notes | §1 | done |
-| 1 | Scaffold: pyproject (light core, `[model]` / `[train]` extras), LICENSE, .gitignore | §13 | |
-| 2 | Core: taxonomy, schema, result, fusion, calibration, registry, detector protocol | §5–7 | |
+| 1 | Scaffold: pyproject (light core, `[model]` / `[train]` extras), LICENSE, .gitignore | §13 | done |
+| 2 | Core: taxonomy, schema, result, fusion, calibration, registry, detector protocol | §5–7 | done |
 | 3 | Heuristic detectors for all four user-facing adapters (+ text rendering) | §5.2 | |
 | 4 | Governance: policy, authz, approval, audit, report | §12 | |
 | 5 | Engine: `SafeJEV.scan`, `guard_tool` with fail-closed, `from_pretrained` | §4, §8 | |
