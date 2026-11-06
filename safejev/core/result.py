@@ -32,6 +32,7 @@ class ScanResult:
     errors: list[str] = field(default_factory=list)             # detector failures
     repair_hint: str = ""
     reasons: list[str] = field(default_factory=list)             # human-readable why
+    scores: dict[str, float] = field(default_factory=dict)       # max score per type, fired or not
 
     @property
     def allowed(self) -> bool:

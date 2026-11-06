@@ -151,6 +151,8 @@ class SafeJEV:
         res = ScanResult(decision=pd.decision, risk_level=fused.risk_level, detections=fused.fired,
                          latency_ms=(time.perf_counter() - t0) * 1000, policy_rule=pd.rule,
                          adapters=ran, errors=errors, repair_hint=hint, reasons=pd.reasons)
+        for d in dets:
+            res.scores[d.type] = max(res.scores.get(d.type, 0.0), d.score)
         if audit and self.audit:
             self.audit.record(inp, res)
         return res
