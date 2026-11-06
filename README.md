@@ -7,7 +7,7 @@ it writes every decision to an audit log.
 
 | | |
 |---|---|
-| **Package** | `safejev` 0.1.0.dev0 (not on PyPI yet, so install from GitHub) |
+| **Package** | `safejev` 0.1.0 (`pip install safejev`) |
 | **Python** | 3.10+ |
 | **Core dependency** | `pyyaml` only. Torch / transformers / peft are optional (`[model]`) |
 | **Status** | research preview. Heuristic detectors work today; trained adapters are not published yet |
@@ -32,8 +32,8 @@ asked for.
 ## Install
 
 ```bash
-pip install "git+https://github.com/shubham10divakar/safejev.git"             # core: heuristic detectors
-pip install "safejev[model] @ git+https://github.com/shubham10divakar/safejev.git"   # + trained adapters
+pip install safejev            # core: heuristic detectors, policy, MCP proxy (only needs pyyaml)
+pip install "safejev[model]"   # + torch / transformers / peft for trained adapters
 ```
 
 ## Quick start
@@ -226,7 +226,7 @@ configs/  examples/  tests/  plan/
 
 | Version | Content |
 |---|---|
-| **v0.1** (in progress) | schema, governance + decorator, MCP proxy, heuristic detectors, encoder adapter code, mutation generator, eval harness. **Next:** train and publish `agent-precheck` |
+| **v0.1** (0.1.0 released: code; adapters pending) | schema, governance + decorator, MCP proxy, heuristic detectors, encoder adapter code, mutation generator, eval harness. **Next:** train and publish `agent-precheck` |
 | v0.2 | trained `guard-injection` / `guard-jailbreak`; robustness to adversarial attacks (E3) |
 | v0.3 | `agent-trajectory` (decoder, long context); step vs. trajectory context (E4); fusion router vs. ensemble (E5) |
 | v0.4 | trained `misuse-request`; reports |

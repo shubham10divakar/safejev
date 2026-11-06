@@ -8,7 +8,7 @@
     print(result.decision, result.risk_level)
 """
 
-__version__ = "0.1.0.dev0"
+__version__ = "0.1.0"
 
 from .core.detector import ScanInput  # noqa: E402
 from .core.result import Detection, ScanResult  # noqa: E402

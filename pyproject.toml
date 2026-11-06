@@ -12,6 +12,16 @@ license-files = ["LICENSE"]
 requires-python = ">=3.10"
 authors = [{ name = "Subham" }]
 keywords = ["llm-security", "prompt-injection", "jailbreak", "ai-agents", "guardrails", "mcp", "governance", "jev"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Security",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 dependencies = ["pyyaml>=6"]
 
 [project.optional-dependencies]
@@ -24,6 +34,8 @@ safejev = "safejev.cli:main"
 
 [project.urls]
 Repository = "https://github.com/shubham10divakar/safejev"
+Issues = "https://github.com/shubham10divakar/safejev/issues"
+Changelog = "https://github.com/shubham10divakar/safejev/blob/main/CHANGELOG.md"
 
 [tool.hatch.version]
 path = "safejev/__init__.py"
@@ -32,7 +44,7 @@ path = "safejev/__init__.py"
 packages = ["safejev"]
 
 [tool.hatch.build.targets.sdist]
-include = ["safejev", "training", "configs", "tests", "examples", "README.md", "LICENSE", "pyproject.toml"]
+include = ["safejev", "training", "configs", "tests", "examples", "README.md", "CHANGELOG.md", "LICENSE", "pyproject.toml"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
