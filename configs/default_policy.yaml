@@ -1,0 +1,40 @@
+# Default SafeJEV policy. Load with Policy.from_yaml("configs/default_policy.yaml").
+# The most restrictive matching outcome wins (see safejev/governance/policy.py).
+
+block_on: [critical]
+ask_on: [high]
+
+# Tools that always need a human, whatever the detectors say.
+require_approval_tools: [delete_*, send_email, transfer_funds, external_upload]
+
+# Tools that are blocked (fail_closed_decision) when a detector errors.
+sensitive_tools: [run_shell, execute_*, write_file]
+fail_closed: true
+fail_closed_decision: block
+
+# Per-adapter score thresholds (default 0.5).
+thresholds:
+  agent-precheck: 0.5
+  guard-injection: 0.5
+
+rules:
+  - {type: injected_goal, decision: block}
+  - {type: malformed_call, decision: ask, name: "malformed calls need a look"}
+
+# Deterministic authorization; runs even when every detector says allow.
+authz:
+  default_allow: true
+  tools:
+    - tool: "*_file*"
+      args:
+        path: {denied_prefixes: ["/etc", "/root", "C:\\Windows"]}
+    - tool: transfer_funds
+      args:
+        amount: {max: 1000}
+      rate_limit: 5/h
+    - tool: http_*
+      args:
+        url: {allowed_domains: ["api.example.com"]}
+
+audit_log: ./safejev_audit.jsonl
+approval_timeout: 60
