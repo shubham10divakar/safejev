@@ -56,7 +56,7 @@ safejev/
 | 1 | Scaffold: pyproject (light core, `[model]` / `[train]` extras), LICENSE, .gitignore | §13 | done |
 | 2 | Core: taxonomy, schema, result, fusion, calibration, registry, detector protocol | §5–7 | done |
 | 3 | Heuristic detectors for all four user-facing adapters (+ text rendering) | §5.2 | done |
-| 4 | Governance: policy, authz, approval, audit, report | §12 | |
+| 4 | Governance: policy, authz, approval, audit, report | §12 | done |
 | 5 | Engine: `SafeJEV.scan`, `guard_tool` with fail-closed, `from_pretrained` | §4, §8 | |
 | 6 | Input converters (OpenAI / LangChain / MCP / trajectory) + MCP stdio proxy | §4 | |
 | 7 | Encoder detector: backbone + LoRA + 3 heads, save / load, temperature | §5.3, §10 | |

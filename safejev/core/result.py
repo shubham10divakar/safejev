@@ -31,6 +31,7 @@ class ScanResult:
     adapters: list[str] = field(default_factory=list)           # name@version that ran
     errors: list[str] = field(default_factory=list)             # detector failures
     repair_hint: str = ""
+    reasons: list[str] = field(default_factory=list)             # human-readable why
 
     @property
     def allowed(self) -> bool:
