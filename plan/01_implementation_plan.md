@@ -62,9 +62,27 @@ safejev/
 | 7 | Encoder detector: backbone + LoRA + 3 heads, save / load, temperature | §5.3, §10 | done |
 | 8 | Training tooling: sources, converters, mutation generator, leakage, trainer, calibrate | §9, §10 | done |
 | 9 | Evaluation: metrics, bootstrap CI, harness (E1/E2/E6), latency (E7) | §11 | done |
-| 10 | CLI: scan / proxy / eval / report | §8 | |
-| 11 | Examples, README, final notes; push | — | |
+| 10 | CLI: scan / proxy / eval / report | §8 | done |
+| 11 | Examples, README, final notes; push | — | done |
 
 ## Resume here (next session)
 
-(filled in at the end of the round)
+Implementation round finished 2026-11-06: 76 tests green on CPU (no network; encoder tests use a
+tiny random BERT). Clean `pip install .` works with only pyyaml. Nothing trained or downloaded.
+Next, in order:
+
+1. **Verify sources (§9.1).** For each `verified=False` entry in `training/sources.py`: confirm
+   the HF id / URL, licence and training terms, then set `verified=True` and fill `license`.
+   Start with TS-Bench (train split), R-Judge, HINTBench, Pre-Exec Bench.
+2. **Check converter field names** in `training/converters.py` against the real files
+   (`tsbench_step`, `rjudge` are written against assumed fields). Add HINTBench / Pre-Exec
+   Bench / AgentDojo-Traj converters.
+3. **Real seeds for the mutation generator:** correct calls from BFCL / xLAM / ToolBench /
+   tau-bench via `mutations.seeds_from_calls`. Human-verify ~500 test samples (§9.4).
+4. **Build the data:** normalise → `leakage.decontaminate` against every eval set →
+   `leakage.group_split(by="tool")` → train / calib / test JSONL.
+5. **Pilot (§15 open question):** `train_adapter.py --dry-run` on the GPU box, then a small
+   run on TS-Bench-train with ModernBERT-base vs. a nano-jev backbone; pick the default.
+6. **Train `agent-precheck` v0.1**, `safejev eval` on TS-Bench eval + Pre-Exec Bench vs. the
+   heuristic baseline (kill criterion in `00_aims.md`), then E1 / E2 / E6 / E7.
+7. Publish adapter + model card to the Hub, bump to 0.1.0, PyPI.
