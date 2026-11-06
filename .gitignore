@@ -10,3 +10,9 @@ runs/
 /weights/
 *.jsonl.tmp
 safejev_audit.jsonl
+
+# stray virtualenvs
+/Lib/
+/Scripts/
+/Include/
+pyvenv.cfg
